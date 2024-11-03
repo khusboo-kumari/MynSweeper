@@ -189,7 +189,8 @@ function startGame() {
         if (mines.includes(box.id)) {
             gameOver = true;
             revealAllCells();
-            gameOver();
+            // gameOver();
+            GameOver();
         }
     }
 
@@ -262,7 +263,8 @@ Checks if the number of revealed cells (revealCnt) matches the number of safe ce
         p.innerText = "Do you want to play again? ";
 
         const restart = document.createElement("img");
-        restart.src = "assets/restart.svg";
+        // restart.src = "assets/restart.svg";
+        restart.src="https://www.shutterstock.com/shutterstock/photos/1463139755/display_1500/stock-vector-undo-icon-back-or-return-illustration-as-a-simple-vector-sign-trendy-symbol-for-design-1463139755.jpg" ;
         restart.alt = "Restart";
         restart.className = "restart";
 
