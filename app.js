@@ -14,13 +14,13 @@ function startGame() {
     let revealedCellsCount = 0;
     let level = "easy";
     let boardSize = 10;
-    let mineCount = 10;
+    let mineCount = 5;
     let flagsCount = mineCount;
     let mines = [];
     let gameOver = false;
 
     // update grid with difficultu level changes
-    levels.addEventListener("change", function () {
+    levels.addEventListener("change", (event) => {
         level = event.target.value;
         boardSize = levelMapper[level].boardSize;
         mineCount = levelMapper[level].mineCount;
@@ -53,7 +53,7 @@ function startGame() {
 
     // CheatMode Event Listener
     cheatMode.addEventListener("click", (e) => {
-        
+
         if (e.target.innerText === "Off") {
             cheatToggle.innerText = "On";
             revealAllCells();
@@ -173,12 +173,12 @@ function startGame() {
         if (box.classList.contains("flag")) {
             box.classList.remove("flag");
             box.innerText = "";
-            flagsCount--;
+            flagsCount++;
             flagCount.innerText = flagsCount;
         } else {
             box.classList.add("flag");
             box.innerText = "🚩";
-            flagsCount++;
+            flagsCount--;
             flagCount.innerText = flagsCount;
         }
     }
@@ -230,6 +230,7 @@ function startGame() {
             revealAllCells();
             YouWon();
         }
+        if (!mines.includes(`${r}-${c}`)) revealedCellsCount++;
 
     }
 
@@ -264,7 +265,7 @@ Checks if the number of revealed cells (revealCnt) matches the number of safe ce
 
         const restart = document.createElement("img");
         // restart.src = "assets/restart.svg";
-        restart.src="https://www.shutterstock.com/shutterstock/photos/1463139755/display_1500/stock-vector-undo-icon-back-or-return-illustration-as-a-simple-vector-sign-trendy-symbol-for-design-1463139755.jpg" ;
+        restart.src = "https://www.shutterstock.com/shutterstock/photos/1463139755/display_1500/stock-vector-undo-icon-back-or-return-illustration-as-a-simple-vector-sign-trendy-symbol-for-design-1463139755.jpg";
         restart.alt = "Restart";
         restart.className = "restart";
 
@@ -274,33 +275,32 @@ Checks if the number of revealed cells (revealCnt) matches the number of safe ce
             location.reload();
         });
 
-        div.append(loserText, playAgain) ;
-        playground.append(div) ;
+        div.append(loserText, playAgain);
+        playground.append(div);
 
 
     }
 
 
-    function YouWon(){
+    function YouWon() {
         console.log("You won");
         const div = document.createElement("div");
         div.className = "winner-screen"
 
         const winnerText = document.createElement("h2")
         winnerText.innerText = "---- 🎊 YOU WON 🎊 ----"
-
         const playAgain = document.createElement("div");
         playAgain.className = "playAgain";
         const p = document.createElement("p");
         p.innerText = "Play Again";
         const restart = document.createElement("img")
         // restart.src = "assests/restart.svg";
-        restart.src="https://www.shutterstock.com/shutterstock/photos/1463139755/display_1500/stock-vector-undo-icon-back-or-return-illustration-as-a-simple-vector-sign-trendy-symbol-for-design-1463139755.jpg" ;
+        restart.src = "https://www.shutterstock.com/shutterstock/photos/1463139755/display_1500/stock-vector-undo-icon-back-or-return-illustration-as-a-simple-vector-sign-trendy-symbol-for-design-1463139755.jpg";
 
         restart.className = "restart";
         playAgain.append(p, restart);
 
-        playAgain.addEventListener("click", ()=>{
+        playAgain.addEventListener("click", () => {
             location.reload();
         })
 
@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", startGame);
 
 
 const levelMapper = {
-    easy:{
+    easy: {
         boardSize: 10,
         mineCount: 10
     },
