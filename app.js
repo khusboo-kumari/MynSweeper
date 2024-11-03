@@ -275,7 +275,7 @@ Checks if the number of revealed cells (revealCnt) matches the number of safe ce
         });
 
         div.append(loserText, playAgain) ;
-        playground.append(div);
+        playground.append(div) ;
 
 
     }
