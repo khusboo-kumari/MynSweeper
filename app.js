@@ -225,7 +225,7 @@ function startGame() {
             }
         }
 
-        if (revealCount === boardSize * boardSize - mineCount) {
+        if (revealedCellsCount === boardSize * boardSize - mineCount) {
             gameOver = true;
             revealAllCells();
             YouWon();
@@ -254,7 +254,7 @@ Checks if the number of revealed cells (revealCnt) matches the number of safe ce
         div.className = "loser-screen";
 
         const loserText = document.createElement("h2");
-        loserText.innerText = "----- 🐧GAME OVER----- 🐧";
+        loserText.innerText = "----🐧GAME OVER🐧----";
 
         const playAgain = document.createElement("div");
         playAgain.className = "playAgain";
@@ -294,7 +294,9 @@ Checks if the number of revealed cells (revealCnt) matches the number of safe ce
         const p = document.createElement("p");
         p.innerText = "Play Again";
         const restart = document.createElement("img")
-        restart.src = "assests/restart.svg";
+        // restart.src = "assests/restart.svg";
+        restart.src="https://www.shutterstock.com/shutterstock/photos/1463139755/display_1500/stock-vector-undo-icon-back-or-return-illustration-as-a-simple-vector-sign-trendy-symbol-for-design-1463139755.jpg" ;
+
         restart.className = "restart";
         playAgain.append(p, restart);
 
